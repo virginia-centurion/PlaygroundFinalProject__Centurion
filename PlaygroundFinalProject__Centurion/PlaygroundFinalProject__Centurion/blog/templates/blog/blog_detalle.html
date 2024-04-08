@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block banner_title %}Detalle del Blog{% endblock %}
+{% block content %}
+    
+    <h1>{{ blog.titulo }}</h1>
+    <p>{{ blog.subtitulo }}</p>
+    <p>{{ blog.cuerpo }}</p>
+    <p>Publicado por: {{ blog.autor }} - {{ blog.fecha }}</p>
+    <img src="{{ blog.imagen.url }}" alt="Imagen del Blog">
+{% endblock %}

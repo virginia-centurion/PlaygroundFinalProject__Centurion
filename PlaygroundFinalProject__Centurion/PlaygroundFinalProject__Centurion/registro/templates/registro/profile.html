@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+</head>
+<body>
+    <h1>Perfil de Usuario</h1>
+    <p>Información del usuario:</p>
+    <ul>
+        <li>Nombre: {{ profile.user.username }}</li>
+        <li>Email: {{ profile.user.email }}</li>
+        <li>Descripción: {{ profile.description }}</li>
+        <li>Link a la página web: {{ profile.website }}</li>
+    </ul>
+    
+    <h2>Modificar Perfil</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar cambios</button>
+    </form>
+
+    <h2>Borrar Perfil</h2>
+    <p>¡Cuidado! Esta acción no se puede deshacer.</p>
+    <form action="{% url 'delete_profile' %}" method="post">
+        {% csrf_token %}
+        <button type="submit" onclick="return confirm('¿Estás seguro de que quieres borrar tu perfil?')">Borrar Perfil</button>
+    </form>
+</body>
+</html>

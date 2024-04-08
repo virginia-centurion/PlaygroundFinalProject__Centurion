@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block banner_title %}Lista de Blogs{% endblock %}
+
+{% block content %}
+    
+    <div class="post-container">
+        <h1>Últimos posteos</h1>
+        {% for post in posts %}
+            <div class="post">
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.content }}</p>
+                {% if post.image %}
+                    <img src="{{ post.image.url }}" alt="{{ post.title }}">
+                {% endif %}
+                
+                <p>Publicado por: {{ post.user }} - {{ post.created_at }}</p>
+                <a href="{% url 'blog_detalle' pk=post.pk %}">Leer más</a>
+            </div>
+        {% empty %}
+            <p>No hay blogs disponibles.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

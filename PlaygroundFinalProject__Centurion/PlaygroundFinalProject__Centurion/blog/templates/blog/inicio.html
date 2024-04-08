@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block banner_title %}Bienvenido a Mi Blog{% endblock %}
+{% block content %}
+    <!-- Contenido de la página -->
+    <p>¡Gracias por visitar nuestro blog! Aquí encontrarás contenido interesante sobre diversos temas.</p><br>
+    <a href="{% url 'crear_post' %}">Agregar nuevo posteo</a><br>
+{% endblock %}
